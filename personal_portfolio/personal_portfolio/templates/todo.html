@@ -1,0 +1,26 @@
+<h1>this is my todo page</h1>
+
+
+
+<!--<li>Testing todo app for now</li>
+<li>Testing todo app for now numer 2</li>
+</ul>-->
+<!-- the content and how our todo will look-->
+<ul>
+    {% for todo_item in all_items %}
+    <li>
+        {{ todo_item.content }}
+        <form action="/deleteTodo/{{todo_item.id}}" 
+        style="display: inline;"
+        method="Post" > {% csrf_token %}
+            <input type="submit" value="Delete"/>   
+            </form>
+    </li>
+    {% endfor %}
+</ul>
+
+<!--Forms for inputing our todo-->
+<form action="/addTodo/" method="Post" > {% csrf_token %}
+<input type="text" name="content"/>    
+<input type="submit" value="add"/>    
+</form>
